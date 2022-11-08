@@ -1,0 +1,49 @@
+<div class="summary-page">
+  <div class="card text-center">
+    <div class="card-header"></div>
+    <div class="card-body">
+      <h5 class="card-title">Welcome</h5>
+      <p class="card-text">
+        With supporting text below as a natural lead-in to additional content.
+      </p>
+      <a
+        [routerLink]="['/navigator']"
+        [queryParams]="{ tab: 0 }"
+        class="btn btn-primary"
+        >See transactions</a
+      >
+    </div>
+    <div class="card-footer text-muted">
+      You have {{ transactions.length }} transactions
+    </div>
+  </div>
+  <div
+    class="summary-page__list"
+    style="
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 1000px;
+      margin: auto;
+    "
+  >
+    <div
+      *ngFor="let type of types; let i = index"
+      class="card"
+      style="max-width: 400px; width: 100%; margin: 20px"
+    >
+      <div class="card-body">
+        <h5 class="card-title">{{ cache[type] }}</h5>
+        <p class="card-text">
+          {{ type }}
+        </p>
+        <a
+          [routerLink]="['/navigator']"
+          [queryParams]="{ tab: i }"
+          class="btn btn-primary"
+          >See all</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

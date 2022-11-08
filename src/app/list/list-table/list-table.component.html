@@ -1,0 +1,14 @@
+<table class="table" style="text-align: center">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let transaction of transactions">
+      <td>{{ transaction.name.first }} {{ transaction.name.last }}</td>
+      <td>{{ transaction.amount }}</td>
+    </tr>
+  </tbody>
+</table>

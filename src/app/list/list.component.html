@@ -1,0 +1,38 @@
+<ul
+  class="nav nav-tabs"
+  id="myTab"
+  role="tablist"
+  style="display: flex; justify-content: center"
+>
+  <li class="nav-item" *ngFor="let type of types; let i = index">
+    <a
+      class="{{ i === +tab ? 'nav-link active' : 'nav-link' }}"
+      data-toggle="tab"
+      [routerLink]="['/navigator']"
+      [queryParams]="{ tab: i }"
+      role="tab"
+      aria-controls="type"
+      aria-selected="true"
+      >{{ type | titlecase }}</a
+    >
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div
+    *ngFor="let type of types; let i = index"
+    class="{{ i === +tab ? 'tab-pane fade show active' : 'tab-pane fade' }}"
+    id="{{ type }}-tab"
+    role="tabpanel"
+    aria-labelledby="home-tab"
+  >
+    <app-list-table
+      [transactions]="filterTransactionByType(type)"
+    ></app-list-table>
+  </div>
+</div>
+
+<div style="display: flex; justify-content: center">
+  <a [routerLink]="['/']" class="btn btn-primary" style="margin: 20px"
+    >Summary page</a
+  >
+</div>
